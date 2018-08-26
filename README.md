@@ -13,4 +13,4 @@ this project was done throughout the course: https://www.udemy.com/react-redux/
 * issue: npm install | npm start
 * and finally enjoy it.
 #### showing
-![React App](https://raw.githubusercontent.comxcerox/youtube_api_client/master/showroom/use_case_youtube_api_client.gif)
+![React App](https://raw.githubusercontent.com/xcerox/youtube_api_client/master/showroom/use_case_youtube_api_client.gif)

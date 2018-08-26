@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import youtube_api_get from 'youtube-api-search';
-import _ from 'lodash';
+import {isEmpty, debounce} from 'lodash';
 import * as keys from '../keys.json';
 
 import SearchBar from './components/search_bar.jsx';
@@ -23,7 +23,7 @@ class App extends Component {
     }
 
     onSearchChange(term){
-        if (_.isEmpty(term)) {
+        if (isEmpty(term)) {
             this.setState({videos: [], selectedVideo: null});
         } else {
             youtube_api_get({key: keys.YOUTUBE_API, term: term}, (videos) => {
@@ -37,7 +37,7 @@ class App extends Component {
     }
 
     render() {
-        const onSearchChange = _.debounce((term) => {this.onSearchChange(term)}, 300);
+        const onSearchChange = debounce((term) => {this.onSearchChange(term)}, 300);
 
         return (
             <div>

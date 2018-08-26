@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import youtube_api_get from 'youtube-api-search';
+import _ from 'lodash';
 import * as keys from '../keys.json';
 
 import SearchBar from './components/search_bar.jsx';
 import VideoList from './components/video_list.jsx';
 import VideoDetail from './components/video_detail';
+
 class App extends Component {
 
     constructor(props) {
@@ -17,13 +19,17 @@ class App extends Component {
         };
 
         this.onSelectedVideo = this.onSelectedVideo.bind(this);
-        this.onSearchVideo = this.onSearchVideo.bind(this);
+        this.onSearchChange = this.onSearchChange.bind(this);
     }
 
-    onSearchVideo(term){
-        youtube_api_get({key: keys.YOUTUBE_API, term: term}, (videos) => {
-            this.setState({videos}, () => {console.log("onSearchVideo")});
-        });
+    onSearchChange(term){
+        if (_.isEmpty(term)) {
+            this.setState({videos: [], selectedVideo: null});
+        } else {
+            youtube_api_get({key: keys.YOUTUBE_API, term: term}, (videos) => {
+                this.setState({videos}, () => {console.log("onSearchVideo")});
+            });
+        }
     }
 
     onSelectedVideo(selectedVideo) {
@@ -31,9 +37,11 @@ class App extends Component {
     }
 
     render() {
+        const onSearchChange = _.debounce((term) => {this.onSearchChange(term)}, 300);
+
         return (
             <div>
-                <SearchBar onSearchVideo={this.onSearchVideo}/>
+                <SearchBar onSearchChange={onSearchChange}/>
                 <VideoDetail video={this.state.selectedVideo} />
                 <VideoList 
                     onVideoSelected={this.onSelectedVideo}

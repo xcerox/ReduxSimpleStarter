@@ -1,15 +1,16 @@
-# ReduxSimpleStarter
-this project was done throughout the course: https://www.udemy.com/react-redux/
+# youtube_api_client
+in this project, we will have a simple youtube client in which we can look for videos and play them.
 
-### tecnologies 
-``` json
-{
-    "lodash": "^4.17.5",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-redux": "5.0.7",
-    "redux": "4.0.0",
-    "url-parse": "^1.4.3",
-    "webpack": "^1.12.9",
- }
- ```
+this project was done throughout the course: https://www.udemy.com/react-redux/
+#### Settings 
+* create a file Keys.json in root project.
+* add to key.json  
+    ``` json
+    {
+      "YOUTUBE_API": "Here your personal youtube client api from https://console.developers.google.com"
+    }
+    ```
+* issue: npm install | npm start
+* and finally enjoy it.
+#### showing
+![React App](https://raw.githubusercontent.comxcerox/youtube_api_client/master/showroom/use_case_youtube_api_client.gif)

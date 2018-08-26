@@ -1,8 +1,8 @@
 import React from 'react';
 
-const VideoDetail = ({video}) => {
+const VideoDetail = ({ video }) => {
   if (!video) {
-    return <div>loading</div>;
+    return null;
   }
 
   const videoId = video.id.videoId;
@@ -15,8 +15,12 @@ const VideoDetail = ({video}) => {
       </div>
 
       <div className="details">
-        <div>{video.snippet.title}</div>
-        <div>{video.snippet.description}</div>
+        <div className="header">
+          {video.snippet.title}
+        </div>
+        <div className="body">
+          {video.snippet.description}
+        </div>
       </div>
     </div>
   )
